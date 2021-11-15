@@ -12,6 +12,14 @@ body {
     line-height: 19px;
 }
 
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+/* ХЕДЕР */
+
 .header {
     background-color: #635854;
     border-bottom: 4px solid #3596F5;
@@ -74,4 +82,29 @@ body {
     font-weight: bold;
     font-size: 17px;
     line-height: 20px;
+}
+
+
+/* MAIN */
+
+.main {
+    padding-top: 54px;
+    padding-bottom: 99px;
+}
+
+.home-img path {
+    opacity: 0;
+}
+
+.home-img path:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+/* ФУТЕР */
+
+.footer {
+    min-height: 170px;
+    background-color: #D7D7D7;
 }
