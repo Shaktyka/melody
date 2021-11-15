@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Bebas Neue Regular';
+    src: local('../fonts/Bebas Neue Regular'), local('../fonts/BebasNeueRegular'), url('../fonts/BebasNeueRegular.woff2') format('woff2'), url('../fonts/BebasNeueRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -92,6 +100,10 @@ body {
     padding-bottom: 99px;
 }
 
+.main .container {
+    display: flex;
+}
+
 .home-img path {
     opacity: 0;
 }
@@ -99,6 +111,80 @@ body {
 .home-img path:hover {
     opacity: 1;
     cursor: pointer;
+}
+
+.main-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    padding-top: 68px;
+    padding-bottom: 68px;
+}
+
+.main-title {
+    margin: 0;
+    font-family: "Bebas Neue Regular", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 37px;
+    text-transform: uppercase;
+    color: #635854;
+}
+
+.counter-group {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.counter-button {
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.counter-arrow {
+    width: 35px;
+}
+
+.counter-arrow-down {
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 36px;
+    background: #3596F5;
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.counter {
+    display: block;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-family: "Bebas Neue Regular", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #635854;
+    font-size: 124px;
+    line-height: 124px;
 }
 
 
