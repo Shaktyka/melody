@@ -87,7 +87,7 @@ body {
 .navbar-phone {
     color: inherit;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 17px;
     line-height: 20px;
 }
@@ -196,5 +196,79 @@ path.current-floor {
 
 .footer {
     min-height: 170px;
+    padding: 50px 0 56px;
     background-color: #D7D7D7;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer .logo {
+    margin-right: 37px;
+}
+
+.social {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.social-item:not(:last-child) {
+    margin-right: 15px;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer-menu {
+    margin-left: auto;
+}
+
+.menu-item:not(:first-child) {
+    margin-left: 20px;
+}
+
+.menu-link {
+    font-family: "Roboto", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #635854;
+}
+
+.phone {
+    font-family: "Roboto", "Arial", sans-serif;
+    color: #635854;
+    font-style: normal;
+    margin-right: 60px;
+}
+
+.phone-text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 5px;
+}
+
+.phone-link {
+    color: inherit;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none;
 }
