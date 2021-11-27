@@ -312,6 +312,27 @@ path.current-floor {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(-10%);
+    -webkit-transform: translateY(-10%);
+    -moz-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    -o-transform: translateY(-10%);
+    transition: transform 0.2s, opacity 0.2s;
+    -webkit-transition: transform 0.2s, opacity 0.2s;
+    -moz-transition: transform 0.2s, opacity 0.2s;
+    -ms-transition: transform 0.2s, opacity 0.2s;
+    -o-transition: transform 0.2s, opacity 0.2s;
+    transition-delay: 0.2s;
+}
+
+.is-open > .modal-dialog {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
 }
 
 .btn-close {
@@ -328,6 +349,15 @@ path.current-floor {
     width: 60%;
     padding: 50px 66px 57px 102px;
     background-color: #EBEBEB;
+}
+
+.flats-plan path {
+    opacity: 0;
+}
+
+.flats-plan path:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .modal-info {
