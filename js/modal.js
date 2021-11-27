@@ -21,7 +21,8 @@ $(document).ready(function() {
   };
 
   // Нажатие на кнопку "Смотреть квартиры на этаже":
-  const viewFlatsBtnClickHandler = () => {
+  const viewFlatsBtnClickHandler = (evt) => {
+    evt.preventDefault();
     // Взять на этот раз значение из счётчика, оно уже отформатировано:
     const stage = $(".counter").text();
     modalCounter.text(stage);
@@ -52,6 +53,11 @@ $(document).ready(function() {
     flatPaths.removeClass("flat-selected");
   };
 
+  // Нажатие на ссылку описания в модалке:
+  const descriptionsListClickHandler = (evt) => {
+    evt.preventDefault();
+  };
+
   // Обработчики событий:
   floorPath.on("click", floorPathClickHandler);
   closeBtn.on("click", toggleModal);
@@ -60,4 +66,5 @@ $(document).ready(function() {
   flatPaths.on("mouseout", flatPathsMouseoutHandler);
   descriptionsList.on("mouseover", descriptionsListMouseoverHandler);
   descriptionsList.on("mouseout", descriptionsListMouseoutHandler);
+  descriptionsList.on("click", descriptionsListClickHandler);
 });
