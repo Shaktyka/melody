@@ -5,7 +5,7 @@ $(document).ready(function() {
   var closeBtn = $(".btn-close");
   var viewFlatsBtn = $(".view-flats");
   var flatPaths = $(".flats-plan path");
-  var selectedDescriptions = $(".flat-item");
+  var descriptionsList = $(".flat-item");
 
   // Открытие-закрытие модалки
   function toggleModal() {
@@ -36,7 +36,7 @@ $(document).ready(function() {
   // Навели курсор на квартиру на этаже:
   function flatPathsMouseoverHandler() {
     var flatNumber = $(this).attr('data-flat');                  // Получает № квартиры
-    selectedDescriptions.removeClass("selected");                // Удаляет класс выделения с элементов
+    descriptionsList.removeClass("selected");                     // Удаляет класс выделения с элементов
     $(`[data-flat-descr=${flatNumber}]`).toggleClass("selected"); // Добавляет класс выделения эл-ту
   };
 
@@ -45,10 +45,24 @@ $(document).ready(function() {
     $(".flat-item").removeClass("selected");
   };
 
+  // Навели курсор на пункт списка
+  function descriptionsListMouseoverHandler() {
+    var flatNumber = $(this).attr('data-flat-descr');
+    flatPaths.removeClass("flat-selected");
+    $(`[data-flat=${flatNumber}]`).toggleClass("flat-selected");
+  };
+
+  // Убрали курсор с пункта списка
+  function descriptionsListMouseoutHandler() {
+    flatPaths.removeClass("flat-selected");
+  };
+
   // Обработчики событий
   floorPath.on("click", floorPathClickHandler);
   closeBtn.on("click", toggleModal);
   viewFlatsBtn.on("click", viewFlatsBtnClickHandler);
   flatPaths.on("mouseover", flatPathsMouseoverHandler);
   flatPaths.on("mouseout", flatPathsMouseoutHandler);
+  descriptionsList.on("mouseover", descriptionsListMouseoverHandler);
+  descriptionsList.on("mouseout", descriptionsListMouseoutHandler);
 });

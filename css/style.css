@@ -360,6 +360,11 @@ path.current-floor {
     cursor: pointer;
 }
 
+path.flat-selected {
+    opacity: 1;
+    cursor: pointer;
+}
+
 .modal-info {
     width: 40%;
     padding: 50px 100px 62px 47px;
