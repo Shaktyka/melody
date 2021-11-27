@@ -1,42 +1,58 @@
 $(document).ready(function() {
-    var maxFloor = 18;
-    var minFloor = 2
-    var floorPath = $(".home-img path");
-    var currentFloor = 2;
-    var currFloorView = 2;
-    var counterUp = $(".counter-up");
-    var counterDown = $(".counter-down");
+    const maxFloor = 18;
+    const minFloor = 2
+    const floorPath = $(".home-img path");
+    const counterUp = $(".counter-up");
+    const counterDown = $(".counter-down");
+    const counter = $("counter");
 
-    // Сделать подсветку этажа на старте и когда убирается курсор от здания
-    // $(`[data-floor=${currentFloor}]`).toggleClass('current-floor');
+    let currentFloor = 2;
 
-    floorPath.on("mouseover", function() {
-        floorPath.removeClass('current-floor');
-        currentFloor = $(this).attr('data-floor');
-        currFloorView = currentFloor < 10 ? `0${currentFloor}` : currentFloor;
-        $(".counter").text(currFloorView);
-    });
+    // Меняет счётчик:
+    const changeCounter = (value) => {
+        const formattedValue = formatStageValue(value);
+        $(".counter").text(formattedValue);
+    };
+    
+    // Подсвечивает текущий этаж:
+    const lightCurrentFloor = () => {
+        floorPath.removeClass("current-floor");
+        $(`[data-floor=${currentFloor}]`).toggleClass("current-floor");
+    };
 
-    // Обработка клика по кнопке "Вверх"
-    // Автор использует ф-цию toLocaleString("en-US", {minimumIntegerDigits: 2, useGroupping: false})
-    counterUp.on("click", function() {
-        if (currentFloor < maxFloor) {
-            currentFloor += 1;
-            currFloorView = currentFloor < 10 ? `0${currentFloor}` : currentFloor;
-            $(".counter").text(currFloorView);
-            floorPath.removeClass('current-floor');
-            $(`[data-floor=${currentFloor}]`).toggleClass('current-floor');
-        }
-    });
-
-    // Обработка клика по кнопке "Вниз"
-    counterDown.on("click", function() {
+    // Кликнули по кнопке "Вниз":
+    function counterDownClickHandler() {
         if (currentFloor > minFloor) {
-            currentFloor -= 1;
-            currFloorView = currentFloor < 10 ? `0${currentFloor}` : currentFloor;
-            $(".counter").text(currFloorView);
-            floorPath.removeClass('current-floor');
-            $(`[data-floor=${currentFloor}]`).toggleClass('current-floor');
+            currentFloor = +currentFloor - 1;
         }
-    });
+        changeCounter(currentFloor);
+        lightCurrentFloor();
+    };
+
+    // Кликнули по кнопке "Вверх":
+    function counterUpClickHandler() {
+        if (currentFloor < maxFloor) {
+            currentFloor = +currentFloor + 1;
+        }
+        changeCounter(currentFloor);
+        lightCurrentFloor();
+    };
+
+    // Навели курсор на этаж здания:
+    function mouseoverClickHandler() {
+        currentFloor = $(this).attr("data-floor");
+        lightCurrentFloor();
+        changeCounter(currentFloor);
+    };
+
+    counterDown.on("click", counterDownClickHandler);
+    counterUp.on("click", counterUpClickHandler);
+    floorPath.on("mouseover", mouseoverClickHandler);
+
+    // Начальное состояние:
+    const start = () => {
+        lightCurrentFloor();
+    };
+
+    start();
 });

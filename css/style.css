@@ -110,10 +110,6 @@ body {
 
 path.current-floor {
     opacity: 1;
-}
-
-.home-img path:hover {
-    opacity: 1;
     cursor: pointer;
 }
 

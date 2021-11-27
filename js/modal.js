@@ -1,63 +1,58 @@
 $(document).ready(function() {
-  var floorPath = $(".home-img path");
-  var modal = $(".modal");
-  var modalCounter = $(".modal-counter");
-  var closeBtn = $(".btn-close");
-  var viewFlatsBtn = $(".view-flats");
-  var flatPaths = $(".flats-plan path");
-  var descriptionsList = $(".flat-item");
+  const floorPath = $(".home-img path");
+  const modal = $(".modal");
+  const modalCounter = $(".modal-counter");
+  const closeBtn = $(".btn-close");
+  const viewFlatsBtn = $(".view-flats");
+  const flatPaths = $(".flats-plan path");
+  const descriptionsList = $(".flat-item");
 
   // Открытие-закрытие модалки
-  function toggleModal() {
+  const toggleModal = () => {
     modal.toggleClass("is-open");
-  }
-
-  // Форматирует значение этажа
-  function formatStageValue(stageNum) {
-    return stageNum < 10 ? `0${stageNum}` : stageNum;
   };
 
-  // Нажатие на этаж
+  // Нажатие на этаж:
   function floorPathClickHandler() {
-    var stage = $(this).attr('data-floor');
-    var formattedStage = formatStageValue(stage); // вернёт отформат-ное значение этажа
+    const stage = $(this).attr("data-floor");
+    const formattedStage = formatStageValue(stage); // вернёт отформат-ное значение этажа
     modalCounter.text(formattedStage);
     toggleModal();
   };
 
-  // Нажатие на кнопку "Смотреть квартиры на этаже"
-  function viewFlatsBtnClickHandler() {
-    // Взять на этот раз значение из счётчика, оно уже отформатировано
-    var stage = $(".counter").text();
+  // Нажатие на кнопку "Смотреть квартиры на этаже":
+  const viewFlatsBtnClickHandler = () => {
+    // Взять на этот раз значение из счётчика, оно уже отформатировано:
+    const stage = $(".counter").text();
     modalCounter.text(stage);
     toggleModal();
   };
 
   // Навели курсор на квартиру на этаже:
   function flatPathsMouseoverHandler() {
-    var flatNumber = $(this).attr('data-flat');                  // Получает № квартиры
+    const flatNumber = $(this).attr("data-flat");                  // Получает № квартиры
     descriptionsList.removeClass("selected");                     // Удаляет класс выделения с элементов
     $(`[data-flat-descr=${flatNumber}]`).toggleClass("selected"); // Добавляет класс выделения эл-ту
   };
 
-  // Убрали курсор с квартиры на схеме
-  function flatPathsMouseoutHandler() {
+  // Убрали курсор с квартиры на схеме:
+  const flatPathsMouseoutHandler = () => {
     $(".flat-item").removeClass("selected");
   };
 
-  // Навели курсор на пункт списка
+  // Навели курсор на пункт списка:
   function descriptionsListMouseoverHandler() {
-    var flatNumber = $(this).attr('data-flat-descr');
+    const flatNumber = $(this).attr("data-flat-descr");
     flatPaths.removeClass("flat-selected");
     $(`[data-flat=${flatNumber}]`).toggleClass("flat-selected");
   };
 
-  // Убрали курсор с пункта списка
-  function descriptionsListMouseoutHandler() {
+  // Убрали курсор с пункта списка:
+  const descriptionsListMouseoutHandler = () => {
     flatPaths.removeClass("flat-selected");
   };
 
-  // Обработчики событий
+  // Обработчики событий:
   floorPath.on("click", floorPathClickHandler);
   closeBtn.on("click", toggleModal);
   viewFlatsBtn.on("click", viewFlatsBtnClickHandler);
