@@ -4,6 +4,8 @@ $(document).ready(function() {
   var modalCounter = $(".modal-counter");
   var closeBtn = $(".btn-close");
   var viewFlatsBtn = $(".view-flats");
+  var flatPaths = $(".flats-plan path");
+  var selectedDescriptions = $(".flat-item");
 
   // Открытие-закрытие модалки
   function toggleModal() {
@@ -31,8 +33,22 @@ $(document).ready(function() {
     toggleModal();
   };
 
+  // Навели курсор на квартиру на этаже:
+  function flatPathsMouseoverHandler() {
+    var flatNumber = $(this).attr('data-flat');                  // Получает № квартиры
+    selectedDescriptions.removeClass("selected");                // Удаляет класс выделения с элементов
+    $(`[data-flat-descr=${flatNumber}]`).toggleClass("selected"); // Добавляет класс выделения эл-ту
+  };
+
+  // Убрали курсор с квартиры на схеме
+  function flatPathsMouseoutHandler() {
+    $(".flat-item").removeClass("selected");
+  };
+
   // Обработчики событий
   floorPath.on("click", floorPathClickHandler);
   closeBtn.on("click", toggleModal);
   viewFlatsBtn.on("click", viewFlatsBtnClickHandler);
+  flatPaths.on("mouseover", flatPathsMouseoverHandler);
+  flatPaths.on("mouseout", flatPathsMouseoutHandler);
 });

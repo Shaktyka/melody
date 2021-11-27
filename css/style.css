@@ -407,6 +407,11 @@ path.current-floor {
     text-decoration: underline;
 }
 
+.selected a {
+    color: #3596F5;
+    text-decoration: underline;
+}
+
 small {
     font-family: "Roboto", sans-serif;
     font-style: italic;
